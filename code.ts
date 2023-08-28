@@ -1,9 +1,4 @@
-// This plugin will fetch a random product name from an API and display it in a text layer.
 
-// This file holds the main code for plugins. Code in this file has access to
-// the *figma document* via the figma global object.
-// You can access browser APIs in the <script> tag inside "ui.html" which has a
-// full browser environment (See https://www.figma.com/plugin-docs/how-plugins-run).
 
 // This shows the HTML page in "ui.html".
 figma.showUI(__html__, { width: 200, height: 270, title: "Product Detail Generator" });
@@ -20,9 +15,7 @@ async function fetchProduct() {
   return productData;
 }
 
-// Calls to "parent.postMessage" from within the HTML page will trigger this
-// callback. The callback will be passed the "pluginMessage" property of the
-// posted message.
+
 figma.ui.onmessage = async msg => {
   const productData = await fetchProduct();
   const productName = productData.title;
@@ -40,7 +33,7 @@ figma.ui.onmessage = async msg => {
     case 'price':
       handleTextElement(`$${productData.price}`);
       break;
-    // Add cases for other message types
+    // Add cases for other message types -- To do
     case 'image':
       handleImageElement(productData.image)
       break;
@@ -48,10 +41,6 @@ figma.ui.onmessage = async msg => {
       // No specific action for the message type
       break;
   }
-
-  // Make sure to close the plugin when you're done. Otherwise, the plugin will
-  // keep running, which shows the cancel button at the bottom of the screen.
-  // figma.closePlugin();
 };
 
 function handleTextElement(text: string) {
