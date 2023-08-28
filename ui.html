@@ -1,0 +1,160 @@
+<h3>Product Generator</h3>
+<!-- <p>Count: <input id="count" value="" placeholder="Number to generate"></p> -->
+<div class="button-parent">
+  <button id="title" class="button-4">Product Title</button>
+  <button id="description" class="button-4">Description</button>
+  <button id="category" class="button-4">Category</button>
+  <button id="price" class="button-4">Price</button>
+  <button id="image" class="button-4">Image</button>
+</div>
+<!-- <button id="all" class="button-10">All Details</button> -->
+
+<script>
+  function postMessage(type) {
+    parent.postMessage({ pluginMessage: { type: type } }, "*");
+  }
+
+  function handleClick(event) {
+    switch (event.target.id) {
+      case "title":
+        postMessage("title");
+        break;
+      case "description":
+        postMessage("description");
+        break;
+      case "category":
+        postMessage("category");
+        break;
+      case "price":
+        postMessage("price");
+        break;
+      case "image":
+        postMessage("image");
+        break;
+      case "cancel":
+        postMessage("cancel");
+        break;
+      // case "all":
+      //   postMessage("all");
+      //   break;
+      default:
+        break;
+    }
+  }
+
+  document.getElementById("title").onclick = handleClick;
+  document.getElementById("description").onclick = handleClick;
+  document.getElementById("category").onclick = handleClick;
+  document.getElementById("price").onclick = handleClick;
+  document.getElementById("image").onclick = handleClick;
+  // document.getElementById("all").onclick = handleClick;
+  document.getElementById("cancel").onclick = handleClick;
+</script>
+
+
+<style>
+  
+  #container {
+    width: 600px; /* Change this to your desired width */
+    height: 300px; /* Change this to your desired height */
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .button-4 {
+    appearance: none;
+    background-color: #fafbfc;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0,
+      rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+    box-sizing: border-box;
+    color: #24292e;
+    cursor: pointer;
+    display: inline-block;
+    /* font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
+      sans-serif, "Apple Color Emoji", "Segoe UI Emoji"; */
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    padding: 6px 16px;
+    position: relative;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: break-word;
+  }
+
+  .button-4:hover {
+    background-color: #f3f4f6;
+    text-decoration: none;
+    transition-duration: 0.1s;
+  }
+
+  .button-4:disabled {
+    background-color: #fafbfc;
+    border-color: rgba(27, 31, 35, 0.15);
+    color: #959da5;
+    cursor: default;
+  }
+
+  .button-4:active {
+    background-color: #edeff2;
+    box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+    transition: none 0s;
+  }
+
+  .button-4:focus {
+    outline: 1px transparent;
+  }
+
+  .button-4:before {
+    display: none;
+  }
+
+  .button-4:-webkit-details-marker {
+    display: none;
+  }
+
+  .button-parent {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 5px;
+    background-color: antiquewhite;
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  /* Second button */
+  .button-10 {
+    width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 14px;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif; */
+  border-radius: 6px;
+  border: none;
+  color: #fff;
+  background: linear-gradient(180deg, #4B91F7 0%, #367AF6 100%);
+   background-origin: border-box;
+  box-shadow: 0px 0.5px 1.5px rgba(54, 122, 246, 0.25), inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-10:focus {
+  box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1.5px rgba(54, 122, 246, 0.25), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
+  outline: 0;
+}
+</style>
+
+
+
